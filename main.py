@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from routers.base import api_router
 from core.config import settings
 from db.session import engine
-from db.models.base import Base
+from db.models import Base
 
 
 

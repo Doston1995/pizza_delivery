@@ -1,9 +1,9 @@
 from fastapi import APIRouter
 
 
-order_router = APIRouter()
+router = APIRouter()
 
 
-@order_router.get('/')
+@router.get('')
 async def order():
     return {'message':"Order page"}

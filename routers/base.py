@@ -1,10 +1,10 @@
 import imp
 from fastapi import APIRouter
-from routers.auth_route import auth_router
-from routers.order_route import order_router
+from routers import auth_route
+from routers import order_route
 
 api_router = APIRouter()
 
 
-api_router.include_router(auth_router,  prefix="/auth",tags=["auths"])
-api_router.include_router(order_router,  prefix="/order",tags=["orders"])
+api_router.include_router(auth_route.router,  prefix="/auth",tags=["auths"])
+api_router.include_router(order_route.router,  prefix="/order",tags=["orders"])
