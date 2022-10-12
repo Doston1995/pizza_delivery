@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from db.models import User
-from schemas.auth import SignUpModel
+from schemas.user import SignUpModel
 import datetime, uuid
 from db.hashing import Hasher
 

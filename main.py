@@ -4,8 +4,6 @@ from core.config import settings
 from db.session import engine
 from db.models import Base
 
-
-
 def include_router(app):
     app.include_router(api_router, prefix="/api/v1")
 

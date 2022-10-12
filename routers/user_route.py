@@ -4,9 +4,8 @@ from fastapi import Depends, HTTPException, status
 from db.session import get_db
 from typing import List
 from db.models import User
-from schemas.auth import SignUpModel
-from db.repository.auth import list_users, create_user
-
+from schemas.user import SignUpModel
+from db.repository.user import list_users, create_user
 
 router = APIRouter()
 

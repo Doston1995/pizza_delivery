@@ -7,7 +7,6 @@ Base = declarative_base()
 metadata = Base.metadata
 
 
-
 class User(Base):
     __tablename__ = 'users'
 
@@ -16,7 +15,7 @@ class User(Base):
     password = Column(String(255))
     email = Column(String(80), unique=True)
     first_name = Column(Text, nullable = True)
-    is_staff = Column(Boolean, default = False)
+    is_staff = Column(Boolean, default = True)
     gender = Column(String(1), default = False)
     create_at = Column(String(50))
     orders = relationship('Order', back_populates = 'user')
@@ -44,7 +43,7 @@ class Order(Base):
     quantity = Column(String, nullable = True)
     order_status = Column(ChoiceType(choices=ORDER_STATUS), default='PENDING')
     pizza_size = Column(ChoiceType(choices=PIZZA_SIZE), default='SMALL')
-    create_at = Column(Date)
+    create_at = Column(String, nullable = True)
     user_id = Column(String, ForeignKey('users.id'))
     user = relationship('User', back_populates = 'orders')
 

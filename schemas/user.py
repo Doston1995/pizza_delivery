@@ -1,7 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional
 
-
 class SignUpModel(BaseModel):
     id         :Optional[str]
     username   :Optional[str]
@@ -19,8 +18,7 @@ class SignUpModel(BaseModel):
                 'password'   :'123',
                 'email'      :'example@gmail.com',
                 'first_name' :'Doston',
-                'is_staff'   :False,
+                'is_staff'   :True,
                 'gender'     :'M',
             }
         }
-        
