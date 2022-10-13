@@ -1,7 +1,21 @@
 from pydantic import BaseModel
 from typing import Optional, List
 from db.models import Order
+from enum import Enum
 
+
+
+class Order_status(str, Enum):
+        PENDING    = 'PENDING'
+        IN_TRANSIT = 'IN_TRANSIT'
+        DELIVERED  = 'DELIVERED'
+        
+        
+class Pizza_size(str, Enum):
+        SMALL       = 'SMALL'
+        MEDIUM      = 'MEDIUM'
+        LARGE       = 'LARGE'
+        EXTRA_LARGE = 'EXTRA_LARGE'
 
 class OrderModel(BaseModel):
     id           :Optional[str]
@@ -29,8 +43,15 @@ class OrderShow(BaseModel):
 
 class OrderCreate(BaseModel):
     quantity     :str
-    order_status :str ='PENDING'
-    pizza_size   :str = "SMALL"
+    order_status :Order_status 
+    pizza_size   :Pizza_size
+    
+    class Config:
+        orm_mode = True
+        
+
+class OrderStatusModel(BaseModel):
+    order_status : Order_status 
     
     class Config:
         orm_mode = True
