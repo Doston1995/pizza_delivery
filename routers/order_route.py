@@ -46,3 +46,13 @@ async def user_orders(db:Session = Depends(get_db), user:User = Depends(get_curr
     user_id = user.id
     current_user = db.query(User).filter(User.id == user_id).first()
     return current_user.orders
+
+
+@router.get("/user/order/{id}")
+async def order_user(id:str, db:Session = Depends(get_db), user:User = Depends(get_current_user_from_token)):
+    order = retreive_order(id=id,db=db)
+    user_id = user.id
+    if order.user_id==user_id:
+        return order
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                    detail=f"Order with this id {id} does not exist or You are not owner")
